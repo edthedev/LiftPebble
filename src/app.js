@@ -11,10 +11,10 @@ var Vibe = require('ui/vibe');
 var sets = 0;
 
 var main = new UI.Card({
-  title: 'Pebble.js',
-  icon: 'images/menu_icon.png',
-  subtitle: 'Hello World!',
-  body: 'Press any button.',
+  title: 'Lift!',
+  // icon: 'images/menu_icon.png',
+  subtitle: 'by EdTheDev',
+  body: 'Press Up to record a set, down to start cooldown timer.',
   subtitleColor: 'indigo', // Named colors
   bodyColor: '#9a0036' // Hex colors
 });
@@ -26,18 +26,7 @@ main.on('click', 'up', function(e) {
 });
 
 function displaySets() {
-  var wind = new UI.Window({
-    fullscreen: true,
-  });
-  var textfield = new UI.Text({
-    position: new Vector2(0, 65),
-    size: new Vector2(144, 30),
-    font: 'gothic-24-bold',
-    text: 'Sets completed: ' + sets,
-    textAlign: 'center'
-  });
-  wind.add(textfield);
-  wind.show();
+  main.body("Sets completed " + sets);
 }
 
 main.on('click', 'select', function(e) {
@@ -45,17 +34,11 @@ main.on('click', 'select', function(e) {
 });
 
 main.on('click', 'down', function(e) {
-  var wind = new UI.Card({
-    title: 'Lift',
-    subtitle: 'Cool down',
-    body: 'Cool down started.'
-  });
-  wind.show();
-  
+  main.body("90 second cool down started.");
   Wakeup.schedule(
   {
     // Set the wakeup event for one minute from now
-    time: Date.now() / 1000 + 60,
+    time: Date.now() / 1000 + 90,
     // Pass data for the app on launch
     data: { hello: 'world' }
   },
@@ -74,12 +57,5 @@ main.on('click', 'down', function(e) {
 Wakeup.on('wakeup', function(e) {
   Vibe.vibrate('long');
   console.log('Wakeup event! ' + JSON.stringify(e));
-  var wind = new UI.Card({
-    title: 'Lift',
-    subtitle: 'Cool down',
-    body: 'Time for next set.'
-  });
-  wind.show();
-  
-  
+  main.body("Time for next set.");
 });
