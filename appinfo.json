@@ -4,7 +4,7 @@
         ""
     ],
     "companyName": "edthedev@gmail.com",
-    "longName": "Lift",
+    "longName": "Lift - Set counter and cool down timer.",
     "projectType": "pebblejs",
     "resources": {
         "media": [
@@ -39,7 +39,7 @@
     ],
     "uuid": "33282b69-4d4d-4a4d-b221-d316194606b5",
     "versionCode": 1,
-    "versionLabel": "1.0",
+    "versionLabel": "1.1",
     "watchapp": {
         "hiddenApp": false,
         "watchface": false

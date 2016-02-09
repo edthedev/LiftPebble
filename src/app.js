@@ -26,10 +26,11 @@ main.on('click', 'up', function(e) {
 });
 
 function displaySets() {
-  main.body("Sets completed " + sets);
+  main.subtitle("Completed: " + sets);
 }
 
 main.on('click', 'select', function(e) {
+  sets = 0;
   displaySets();
 });
 
