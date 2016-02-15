@@ -45,7 +45,7 @@ main.on('click', 'down', function(e) {
   Wakeup.schedule(
   {
     // Set the wakeup event for one minute from now
-    time: Date.now() / 1000 + 90,
+    time: Date.now() / 1000 + coolDown,
     // Pass data for the app on launch
     data: { hello: 'world' }
   },
