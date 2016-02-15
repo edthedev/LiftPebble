@@ -5,10 +5,11 @@
  */
 
 var UI = require('ui');
-var Vector2 = require('vector2');
+// var Vector2 = require('vector2');
 var Wakeup = require('wakeup');
 var Vibe = require('ui/vibe');
 var sets = 0;
+var coolDown = 90;
 
 var main = new UI.Card({
   title: 'Lift!',
@@ -21,6 +22,7 @@ var main = new UI.Card({
 main.show();
 
 main.on('click', 'up', function(e) {
+  console.log('Main click up!');
   sets += 1;
   displaySets();
 });
@@ -30,12 +32,18 @@ function displaySets() {
 }
 
 main.on('click', 'select', function(e) {
-  sets = 0;
-  displaySets();
+  console.log('Main click!');
+  if(coolDown == 90) {
+    coolDown = 60;
+  } else {
+    coolDown = 90;
+  }
+  main.body('Cool down is ' + coolDown + ' seconds.');
+  console.log('Cool down is ' + coolDown + ' seconds.');
 });
 
 main.on('click', 'down', function(e) {
-  main.body("90 second cool down started.");
+  main.body(coolDown + " second cool down started.");
   Wakeup.schedule(
   {
     // Set the wakeup event for one minute from now
