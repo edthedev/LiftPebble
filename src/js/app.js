@@ -33,7 +33,7 @@ main.on('click', 'up', function(e) {
 
 main.on('click', 'select', function(e) {
   if(coolDown == 90) {
-    coolDown = 60;
+    coolDown = 180;
   } else {
     coolDown = 90;
   }
